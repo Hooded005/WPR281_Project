@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: lightgray;
+    align-items: center;
+    display: flex;
+}
+.container{
+    background-color: white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: 25%;
+}
+#bluebar{
+    background-color: #48A5EA;
+    position: fixed;
+    top: 0;
+    border-right: 0;
+    left: 0;
+    width: 25%;
+    height: 100%;
+    padding: 20px;
+    display: inline-block;
+}
+h1{
+    color: #48A5EA;
+    border-bottom: outset;
+}
+#submit{
+    border-radius: 20px;
+    background-color: #48A5EA;
+    color: white;
+    border: #48A5EA;
+    padding: 5px;
+    margin-left: 5px;
+}
+#reset{
+    background-color: white;
+    border-color: white;
+    color: grey;
+    border: 0;
+}
+input{
+    padding: 5px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+select{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
