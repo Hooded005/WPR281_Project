@@ -12,7 +12,27 @@ const form = document.getElementById("form");
 
 form.addEventListener('submit', function(e)
 {
-    if (firstname.value == '' || firstname.value == null)
+    if (state.value == '')
+    {
+        e.preventDefault();
+    }
+    if (city.value == '')
+    {
+        e.preventDefault();
+    }
+    if (isNaN(phone.value))
+    {
+        e.preventDefault();
+    }
+    if (city.value == '')
+    {
+        e.preventDefault();
+    }
+    if(userid.value == '' || userid.value == null)
+    {
+        e.preventDefault();
+    }
+    if(refcode.value == '' || refcode.value == null)
     {
         e.preventDefault();
     }
