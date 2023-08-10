@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <title>Form Validation</title>
     <link rel="stylesheet" href="project.css">
     <script defer src="project.js"></script>
@@ -19,7 +18,6 @@
     </style>
 </head>
 <body>
-    
     <div class="container">
         <form id="form" action="/">
             <h1>Basic Details</h1>
@@ -37,7 +35,7 @@
             </div>
             <div class="input-control">
                 <label for="country">Country</label>
-                <select id="country">
+                <select id="country"  onchange="updateState()">
                     <option value="" disabled selected hidden></option>
                     <option value="option1">South-Africa</option>
                     <option value="option2">USA</option>
@@ -66,11 +64,8 @@
             <section class="dropdown-section">
                 <div class="input-control">
                     <label for="state">State</label>
-                    <select id="state">
+                    <select id="state" onchange="updateCity()">     
                         <option value="" disabled selected hidden></option>
-                        <option value="option1">Western Cape</option>
-                        <option value="option2">California</option>
-                        <option value="option3">Alberta</option>
                       </select>
                     <div id="stateError" class="error"></div>
                 </div>
@@ -78,9 +73,6 @@
                     <label for="city">City</label>
                     <select id="city">
                         <option value="" disabled selected hidden></option>
-                        <option value="option1">Cape Town</option>
-                        <option value="option2">Los Angeles</option>
-                        <option value="option3">Calgary</option>
                       </select>
                     <div id="cityError" class="error"></div>
                 </div>
