@@ -32,16 +32,32 @@ form.addEventListener('reset', e => {
     lname.classList.remove("invalid");
     emailError.textContent = "";
     email.classList.remove("invalid");
+    useridError.textContent = "";
+    userid.classList.remove("invalid");
     countryError.textContent = "";
     country.classList.remove("invalid");
-
+    stateError.textContent = "";
+    state.classList.remove("invalid");
+    state.innerHTML = "";
+    cityError.textContent = "";
+    city.classList.remove("invalid");
+    city.innerHTML = "";
+    phoneError.textContent = "";
+    phone.classList.remove("invalid");
+    refcodeError.textContent = "";
+    refcode.classList.remove("invalid");
 });
 
 const validateInputs = () =>{
     fnameValid();
     lnameValid();
     emailValid();
+    userIDValid();
     countryValid();
+    stateValid();
+    cityValid();
+    phoneValid();
+    refcodeValid();
 }
 
 fname.onblur = function () {
@@ -102,6 +118,22 @@ const emailValid = () =>{
     }
 }
 
+userid.onblur = function (){
+    userIDValid();
+}
+
+const userIDValid = () =>{
+    const userIDValue = userid.value.trim();
+
+    if (userIDValue === "") {
+        useridError.textContent = "UserID is required.";
+        userid.classList.add("invalid");
+    } else {
+        useridError.textContent = "";
+        userid.classList.remove("invalid");
+    }
+}
+
 country.onblur = function (){
     countryValid();
 };
@@ -116,4 +148,155 @@ const countryValid = () =>{
         countryError.textContent = "";
         country.classList.remove("invalid");
     }
+}
+
+state.onblur = function (){
+    stateValid();
+};
+
+const stateValid = () =>{
+    const stateValue = state.value.trim();
+
+    if (stateValue === "") {
+        stateError.textContent = "Please select a state.";
+        state.classList.add("invalid");
+    }else {
+        stateError.textContent = "";
+        state.classList.remove("invalid");
+    }
+}
+
+city.onblur = function (){
+    cityValid();
+};
+
+const cityValid = () =>{
+    const cityValue = city.value.trim();
+
+    if (cityValue === "") {
+        cityError.textContent = "Please select a state.";
+        city.classList.add("invalid");
+    }else {
+        cityError.textContent = "";
+        city.classList.remove("invalid");
+    }
+}
+
+phone.onblur = function (){
+    phoneValid();
+};
+
+const phoneValid = () =>{
+    const phoneValue = phone.value.trim();
+
+    if (phoneValue === ""){
+        phoneError.textContent = "Phone Number is required.";
+        phone.classList.add("invalid");
+    } else if (!/^\d+$/.test(phoneValue)){
+        phoneError.textContent = "Phone Number can only countain digits.";
+        phone.classList.add("invalid");
+    } else if (!/^\d{10}$/.test(phoneValue)){
+        phoneError.textContent = "Phone Number needs to be 10 digits";
+        phone.classList.add("invalid");
+    } else {
+        phoneError.textContent = "";
+        phone.classList.remove("invalid");
+    }
+}
+
+refcode.onblur = function (){
+    refcodeValid();
+};
+
+const refcodeValid = () =>{
+    const refcodeValue = refcode.value.trim();
+
+    if (refcodeValue === "") {
+        refcodeError.textContent = "Referral Code is required.";
+        refcode.classList.add("invalid");
+    } else {
+        refcodeError.textContent = "";
+        refcode.classList.remove("invalid");
+    }
+}
+
+function updateState() {
+    let selectedCountry = country.value;
+    state.innerHTML = "";
+
+    if (selectedCountry === "option1") {
+        addOption(state, "");
+        addOption(state, "Western Cape");
+        addOption(state, "Gauteng");
+        addOption(state, "Free State");
+    } else if (selectedCountry === "option2") {
+        addOption(state, "");
+        addOption(state, "Texas");
+        addOption(state, "California");
+        addOption(state, "Florida");
+    } else if (selectedCountry === "option3"){
+        addOption(state, "");
+        addOption(state, "Ontario");
+        addOption(state, "Alberta");
+        addOption(state, "Manitoba");
+    }
+    updateCity();
+}
+
+function updateCity() {
+    let selectedState = state.value;
+    city.innerHTML = "";
+
+    if (selectedState === "Western Cape") {
+        addOption(city, "");
+        addOption(city, "Cape Town");
+        addOption(city, "Stellenbosch");
+        addOption(city, "Worcester");
+    } else if (selectedState === "Gauteng") {
+        addOption(city, "");
+        addOption(city, "Johannesburg");
+        addOption(city, "Pretoria");
+        addOption(city, "Centurion");
+    } else if (selectedState === "Free State"){
+        addOption(city, "");
+        addOption(city, "Bloemfontein");
+        addOption(city, "Welkom");
+        addOption(city, "Clarens");
+    } else if (selectedState === "Texas") {
+        addOption(city, "");
+        addOption(city, "San Antonio");
+        addOption(city, "Dallas");
+        addOption(city, "Houston");
+    } else if (selectedState === "California") {
+        addOption(city, "");
+        addOption(city, "San Francisco");
+        addOption(city, "Los Angeles");
+        addOption(city, "San Diego");
+    } else if (selectedState === "Florida"){
+        addOption(city, "");
+        addOption(city, "Jacksonville");
+        addOption(city, "Orlando");
+        addOption(city, "Miami");
+    } else if (selectedState === "Ontario") {
+        addOption(city, "");
+        addOption(city, "Thunder Bay");
+        addOption(city, "Sudbury");
+        addOption(city, "Timmins");
+    } else if (selectedState === "Alberta") {
+        addOption(city, "");
+        addOption(city, "Edmonton");
+        addOption(city, "Calgary");
+        addOption(city, "Brooks");
+    } else if (selectedState === "Manitoba"){
+        addOption(city, "");
+        addOption(city, "Winnipeg");
+        addOption(city, "Brandon");
+        addOption(city, "Winker");
+    } 
+}
+
+function addOption(selectElement, optionText) {
+    let option = document.createElement("option");
+    option.text = optionText;
+    selectElement.add(option);
 }
