@@ -1,81 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Validation</title>
-    <link rel="stylesheet" href="project.css">
-    <script defer src="project.js"></script>
-    <script src="https://kit.fontawesome.com/27b74e7d77.js" crossorigin="anonymous"></script>
-</head>
-<body id="register">
-    <div class="container">
-        <div id="bluebar"></div>
-        <form id="form" action="/valid.html">
-            <h2>Basic Details</h2>
-        <section id="main-section">
-            <div class="input-control">
-                <div>
-                    <label for="firstname">First Name</label><br>
-                    <input id="firstname" name="firstname" type="text" placeholder="First Name"><br>
-                    <div id="fnameError" class="error"></div>       
-                </div>
-                 <div>        
-                    <label for="lastname">Last Name</label><br>
-                    <input id="lastname" name="lastname" type="text" placeholder="Last Name"><br>
-                    <div id="lnameError" class="error"></div>
-                </div>
-            </div><br>
-            <div class="input-control">
-                <div>
-                    <label for="email">Email ID</label><br>
-                    <input id="email" name="email" type="text" placeholder="Email"><br>
-                    <div id="emailError" class="error"></div>
-                </div>
-                <div>
-                    <label for="userID">Your User ID</label><br>
-                    <input id="userID" name="userID" type="text" placeholder="User ID"><br>
-                    <div id="userIDError" class="error"></div>
-                </div>
-            </div><br>
-            <div class="input-control">
-                <label for="country">Country:</label>
-                <select id="country" onchange="updateState()">
-                    <option value="" disabled selected hidden></option>
-                    <option value="option1">South-Africa</option>
-                    <option value="option2">USA</option>
-                    <option value="option3">Canada</option>
-                </select>
-                <div id="countryError" class="error"></div>
-                <label for="state">State:</label><br>
-                <select id="state" onchange="updateCity()">     
-                    <option value="" disabled selected hidden></option>
-                </select>
-                <div id="stateError" class="error"></div>
-                <label for="city">City:</label><br>
-                <select id="city">
-                    <option value="" disabled selected hidden></option>
-                </select>
-                <div id="cityError" class="error"></div>
-            </div><br>
-            <div class="input-control">
-                <div>
-                    <label for="phone">Phone Number</label><br>
-                    <input id="phone" name="phone" type="text" placeholder="Phone Number"><br>
-                    <div id="phoneError" class="error"></div>
-                </div>
-                <div>
-                    <label for="refcode">Reference Code</label><br>
-                    <input id="refcode" name="refcode" type="text" placeholder="Reference Code"><br>
-                    <div id="refcodeError" class="error"></div>
-                </div>
-            </div>
-        </section>
-        <div class="buttons">
-            <button id="reset" type="reset">Reset All</button>
-            <button id="submit" type="submit">Continue</button>        
-        </div>
-        </form>        
-    </div>
-</body>
-</html>
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: lightgray;
+}
+.container{
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    margin-left: 25%;
+}
+form{
+    background-color: white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 100%;
+    padding: 5px;
+}
+#bluebar{
+    background-color: #48A5EA;
+    position: fixed;
+    top: 0;
+    border-right: 0;
+    left: 0;
+    width: 25%;
+    height: 100%;
+    padding: 1px;
+}
+h2{
+    color: #48A5EA;
+    padding: 10px;
+}
+#submit{
+    border-radius: 20px;
+    background-color: #48A5EA;
+    color: white;
+    border: #48A5EA;
+    padding: 10px;
+    margin-left: 55%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+#reset{    
+    border-radius: 20px;
+    background-color: white;
+    color: grey;
+    border: 0;
+}
+button{
+    display: inline-flex;
+    padding: 10px;
+}
+button:hover{
+    outline: 1px solid #48A5EA;
+}
+.input-control{
+    display: inline-flex;
+    padding: 1%;
+}
+input{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid lightgray;
+}
+input:focus{
+    outline: none;
+    border-bottom:1px solid #48A5EA;
+}
+input:focus::placeholder{
+    color: transparent;
+}
+label{
+    color: gray;
+    font-size: small;
+    display: inline-flex;
+}
+#main-section{
+    border-bottom: 1px solid lightgray;    
+    border-top: 1px solid lightgray;
+    width: fit-content;
+}
+div{
+    margin: 5px;
+}
+.error{    
+    font-size: xx-small;
+    color: red;
+}
