@@ -8,8 +8,6 @@ body{
 .container{
     width: fit-content;
     height: fit-content;
-    align-items: center;
-    justify-content: center;
     margin-left: 25%;
 }
 form{
@@ -18,6 +16,7 @@ form{
     border-bottom-right-radius: 5px;
     width: 100%;
     padding: 5px;
+    margin: auto;
 }
 #bluebar{
     background-color: #48A5EA;
