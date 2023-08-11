@@ -1,14 +1,14 @@
-const form = document.getElementById('form');
-const fname = document.getElementById('firstname');
-const lname = document.getElementById('lastname');
-const email = document.getElementById('email');
-const userid = document.getElementById('userID');
-const country = document.getElementById('country');
-const state = document.getElementById('state');
-const city = document.getElementById('city');
-const phone = document.getElementById('phone');
-const refcode = document.getElementById('refcode');
 
+const firstname = document.getElementById("firstname");
+const lastname = document.getElementById("lastname");
+const email = document.getElementById("email");
+const country = document.getElementById("country");
+const state = document.getElementById("state");
+const city = document.getElementById("city");
+const phone = document.getElementById("phone");
+const userid = document.getElementById("userID");
+const refcode = document.getElementById("refcode");
+const form = document.getElementById("form");
 const fnameError = document.getElementById('fnameError');
 const lnameError = document.getElementById('lnameError');
 const emailError = document.getElementById('emailError');
@@ -42,6 +42,22 @@ form.addEventListener('reset', e => {
     cityError.textContent = "";
     city.classList.remove("invalid");
     city.innerHTML = "";
+
+form.addEventListener('reset', e => {
+    fnameError.textContent = "";
+    firstname.classList.remove("invalid");
+    lnameError.textContent = "";
+    lastname.classList.remove("invalid");
+    emailError.textContent = "";
+    email.classList.remove("invalid");
+    countryError.textContent = "";
+    country.classList.remove("invalid");
+    useridError.textContent = "";
+    userid.classList.remove("invalid");
+    stateError.textContent = "";
+    state.classList.remove("invalid");
+    cityError.textContent = "";
+    city.classList.remove("invalid");
     phoneError.textContent = "";
     phone.classList.remove("invalid");
     refcodeError.textContent = "";
