@@ -1,3 +1,5 @@
+const page = document.body.id.toString();
+
 const fname = document.getElementById("firstname");
 const lname = document.getElementById("lastname");
 const email = document.getElementById("email");
@@ -17,36 +19,66 @@ const stateError = document.getElementById("stateError");
 const cityError = document.getElementById("cityError");
 const phoneError = document.getElementById("phoneError");
 const refcodeError = document.getElementById("refcodeError");
+const error = "";
 
-form.addEventListener('submit', e => {
-    if(validateInputs() == false){
-        
-    }
-    else{
-        e.preventDefault();
-    }
-});
-
-form.addEventListener('reset', e => {
-    fnameError.textContent = "";
-    fname.classList.remove("invalid");
-    lnameError.textContent = "";
-    lname.classList.remove("invalid");
-    emailError.textContent = "";
-    email.classList.remove("invalid");
-    countryError.textContent = "";
-    country.classList.remove("invalid");
-    useridError.textContent = "";
-    userid.classList.remove("invalid");
-    stateError.textContent = "";
-    state.classList.remove("invalid");
-    cityError.textContent = "";
-    city.classList.remove("invalid");
-    phoneError.textContent = "";
-    phone.classList.remove("invalid");
-    refcodeError.textContent = "";
-    refcode.classList.remove("invalid");
-});
+switch (page)
+{
+    case "register":
+        form.addEventListener('submit', e => {
+                e.preventDefault()
+                validateInputs();            
+        });        
+        form.addEventListener('reset', e => {
+            fnameError.textContent = "";
+            fname.classList.remove("invalid");
+            lnameError.textContent = "";
+            lname.classList.remove("invalid");
+            emailError.textContent = "";
+            email.classList.remove("invalid");
+            countryError.textContent = "";
+            country.classList.remove("invalid");
+            useridError.textContent = "";
+            userid.classList.remove("invalid");
+            stateError.textContent = "";
+            state.classList.remove("invalid");
+            cityError.textContent = "";
+            city.classList.remove("invalid");
+            phoneError.textContent = "";
+            phone.classList.remove("invalid");
+            refcodeError.textContent = "";
+            refcode.classList.remove("invalid");
+            error = "";
+        });
+        break;
+    case "valid":
+        const pname = document.createElement("p");
+        pname.appendChild(document.createTextNode(fname.value + " " + lname.value));
+        document.getElementById("fullname").appendChild(headingName);
+        const pmail = document.createElement("p");
+        pmail.appendChild(document.createTextNode(email.value));
+        document.getElementById("email").appendChild(headingEmail);
+        const userID = document.createElement("p");
+        userID.appendChild(document.createTextNode(userid.value));
+        document.getElementById("userID").appendChild(headingUserID);
+        const pcountry = document.createElement("p");
+        pcountry.appendChild(document.createTextNode(country.value));
+        document.getElementById("country").appendChild(headingCountry);
+        const pstate = document.createElement("p");
+        pstate.appendChild(document.createTextNode(state.value));
+        document.getElementById("state").appendChild(headingState);
+        const pcity = document.createElement("p");
+        pcity.appendChild(document.createTextNode(city.value));
+        document.getElementById("city").appendChild(headingCity);
+        const pphone = document.createElement("p");
+        pphone.appendChild(document.createTextNode(phone.value));
+        document.getElementById("phone").appendChild(headingPhone);
+        const prefcode = document.createElement("p");
+        prefcode.appendChild(document.createTextNode(refcode.value));
+        document.getElementById("refcode").appendChild(headingRefCode);
+        break;
+    default:
+        break;
+}
 
 const validateInputs = () =>{
     fnameValid();
@@ -70,9 +102,11 @@ const fnameValid = () =>{
     if (fnameValue === "") {
         fnameError.textContent = "Name is required.";
         fname.classList.add("invalid");
+        error = "invalid";
     } else if (/[0-9]/.test(fnameValue) == true){
         fnameError.textContent = "Name cannot contain a number.";
         fname.classList.add("invalid");
+        error = "invalid";
     } else {
         fnameError.textContent = "";
         fname.classList.remove("invalid");
@@ -89,9 +123,11 @@ const lnameValid = () =>{
     if (lnameValue === "") {
         lnameError.textContent = "Last Name is required.";
         lname.classList.add("invalid");
+        error = "invalid";
     } else if (/[0-9]/.test(lnameValue) == true){
         lnameError.textContent = "Last Name cannot contain a number.";
         lname.classList.add("invalid");
+        error = "invalid";
     } else {
         lnameError.textContent = "";
         lname.classList.remove("invalid");
@@ -109,9 +145,11 @@ const emailValid = () =>{
     if (emailValue === "") {
         emailError.textContent = "Email is required.";
         email.classList.add("invalid");
+        error = "invalid";
     } else if (!emailPattern.test(emailValue)){
         emailError.textContent = "Invalid Email format.";
         email.classList.add("invalid");
+        error = "invalid";
     } else {
         emailError.textContent = "";
         email.classList.remove("invalid");
@@ -128,6 +166,7 @@ const userIDValid = () =>{
     if (userIDValue === "") {
         useridError.textContent = "UserID is required.";
         userid.classList.add("invalid");
+        error = "invalid";
     } else {
         useridError.textContent = "";
         userid.classList.remove("invalid");
@@ -144,6 +183,7 @@ const countryValid = () =>{
     if (countryValue === "") {
         countryError.textContent = "Please select a country.";
         country.classList.add("invalid");
+        error = "invalid";
     }else {
         countryError.textContent = "";
         country.classList.remove("invalid");
@@ -160,6 +200,7 @@ const stateValid = () =>{
     if (stateValue === "") {
         stateError.textContent = "Please select a state.";
         state.classList.add("invalid");
+        error = "invalid";
     }else {
         stateError.textContent = "";
         state.classList.remove("invalid");
@@ -176,6 +217,7 @@ const cityValid = () =>{
     if (cityValue === "") {
         cityError.textContent = "Please select a city.";
         city.classList.add("invalid");
+        error = "invalid";
     }else {
         cityError.textContent = "";
         city.classList.remove("invalid");
@@ -192,12 +234,15 @@ const phoneValid = () =>{
     if (phoneValue === ""){
         phoneError.textContent = "Phone Number is required.";
         phone.classList.add("invalid");
+        error = "invalid";
     } else if (!/^\d+$/.test(phoneValue)){
         phoneError.textContent = "Phone Number can only countain digits.";
         phone.classList.add("invalid");
+        error = "invalid";
     } else if (!/^\d{10}$/.test(phoneValue)){
         phoneError.textContent = "Phone Number needs to be 10 digits";
         phone.classList.add("invalid");
+        error = "invalid";
     } else {
         phoneError.textContent = "";
         phone.classList.remove("invalid");
@@ -214,6 +259,7 @@ const refcodeValid = () =>{
     if (refcodeValue === "") {
         refcodeError.textContent = "Referral Code is required.";
         refcode.classList.add("invalid");
+        error = "invalid";
     } else {
         refcodeError.textContent = "";
         refcode.classList.remove("invalid");
