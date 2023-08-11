@@ -19,97 +19,101 @@ const stateError = document.getElementById("stateError");
 const cityError = document.getElementById("cityError");
 const phoneError = document.getElementById("phoneError");
 const refcodeError = document.getElementById("refcodeError");
-const error = "";
 
-switch (page)
-{
-    case "register":
-        form.addEventListener('submit', e => {
-                e.preventDefault()
-                validateInputs();            
-        });        
-        form.addEventListener('reset', e => {
-            fnameError.textContent = "";
-            fname.classList.remove("invalid");
-            lnameError.textContent = "";
-            lname.classList.remove("invalid");
-            emailError.textContent = "";
-            email.classList.remove("invalid");
-            countryError.textContent = "";
-            country.classList.remove("invalid");
-            useridError.textContent = "";
-            userid.classList.remove("invalid");
-            stateError.textContent = "";
-            state.classList.remove("invalid");
-            cityError.textContent = "";
-            city.classList.remove("invalid");
-            phoneError.textContent = "";
-            phone.classList.remove("invalid");
-            refcodeError.textContent = "";
-            refcode.classList.remove("invalid");
-            error = "";
-        });
-        break;
-    case "valid":
-        const pname = document.createElement("p");
-        pname.appendChild(document.createTextNode(fname.value + " " + lname.value));
-        document.getElementById("fullname").appendChild(headingName);
-        const pmail = document.createElement("p");
-        pmail.appendChild(document.createTextNode(email.value));
-        document.getElementById("email").appendChild(headingEmail);
-        const userID = document.createElement("p");
-        userID.appendChild(document.createTextNode(userid.value));
-        document.getElementById("userID").appendChild(headingUserID);
-        const pcountry = document.createElement("p");
-        pcountry.appendChild(document.createTextNode(country.value));
-        document.getElementById("country").appendChild(headingCountry);
-        const pstate = document.createElement("p");
-        pstate.appendChild(document.createTextNode(state.value));
-        document.getElementById("state").appendChild(headingState);
-        const pcity = document.createElement("p");
-        pcity.appendChild(document.createTextNode(city.value));
-        document.getElementById("city").appendChild(headingCity);
-        const pphone = document.createElement("p");
-        pphone.appendChild(document.createTextNode(phone.value));
-        document.getElementById("phone").appendChild(headingPhone);
-        const prefcode = document.createElement("p");
-        prefcode.appendChild(document.createTextNode(refcode.value));
-        document.getElementById("refcode").appendChild(headingRefCode);
-        break;
-    default:
-        break;
+if (page === "register"){
+    form.addEventListener('submit', e => {
+        if (validateInputs() === false) {
+            e.preventDefault();
+            validateInputs(); 
+        }
+        else {
+            page = "valid";
+        }              
+    });        
+    form.addEventListener('reset', e => {
+        fnameError.textContent = "";
+        fname.classList.remove("invalid");
+        lnameError.textContent = "";
+        lname.classList.remove("invalid");
+        emailError.textContent = "";
+        email.classList.remove("invalid");
+        countryError.textContent = "";
+        country.classList.remove("invalid");
+        useridError.textContent = "";
+        userid.classList.remove("invalid");
+        stateError.textContent = "";
+        state.classList.remove("invalid");
+        cityError.textContent = "";
+        city.classList.remove("invalid");
+        phoneError.textContent = "";
+        phone.classList.remove("invalid");
+        refcodeError.textContent = "";
+        refcode.classList.remove("invalid");
+    });
+}
+if(page === "valid"){
+    document.getElementById("pfullname").innerHTML = fname.value.trim() + " " + lname.value.trim();
+    document.getElementById("pemail").innerHTML = email.value.trim();
+    document.getElementById("puserid").innerHTML = userid.value.trim();
+    document.getElementById("pcountry").innerHTML = country.value.trim();
+    document.getElementById("pstate").innerHTML = state.value.trim();
+    document.getElementById("pcity").innerHTML = city.value.trim();
+    document.getElementById("pphone").innerHTML = phone.value.trim();
+    document.getElementById("prefcode").innerHTML = refcode.value.trim();
 }
 
-const validateInputs = () =>{
-    fnameValid();
-    lnameValid();
-    emailValid();
-    userIDValid();
-    countryValid();
-    stateValid();
-    cityValid();
-    phoneValid();
-    refcodeValid();
+function validateInputs(){
+    if(fnameValid()){
+        return true;
+    }
+    else if(lnameValid()){
+        return true;
+    }
+    else if(emailValid()){
+        return true;
+    }
+    else if(userIDValid()){
+        return true;
+    }
+    else if(countryValid()){
+        return true;
+    }
+    else if(stateValid()){
+        return true;
+    }
+    else if(cityValid()){
+        return true;
+    }
+    else if(phoneValid()){
+        return true;
+    }
+    else if(refcodeValid()){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 fname.onblur = function () {
     fnameValid();
 }
 
-const fnameValid = () =>{
+function fnameValid(){
     const fnameValue = fname.value.trim();
 
     if (fnameValue === "") {
         fnameError.textContent = "Name is required.";
         fname.classList.add("invalid");
-        error = "invalid";
+        return false;
     } else if (/[0-9]/.test(fnameValue) == true){
         fnameError.textContent = "Name cannot contain a number.";
         fname.classList.add("invalid");
-        error = "invalid";
+        return false;
     } else {
         fnameError.textContent = "";
         fname.classList.remove("invalid");
+        return true;
     }
 }
 
@@ -117,20 +121,21 @@ lname.onblur = function () {
     lnameValid();
 }
 
-const lnameValid = () =>{
+function lnameValid(){
     const lnameValue = lname.value.trim();
 
     if (lnameValue === "") {
         lnameError.textContent = "Last Name is required.";
         lname.classList.add("invalid");
-        error = "invalid";
+        return false;
     } else if (/[0-9]/.test(lnameValue) == true){
         lnameError.textContent = "Last Name cannot contain a number.";
         lname.classList.add("invalid");
-        error = "invalid";
+        return false;
     } else {
         lnameError.textContent = "";
         lname.classList.remove("invalid");
+        return true;
     }
 }
 
@@ -138,21 +143,22 @@ email.onblur = function () {
     emailValid();
 }
 
-const emailValid = () =>{
+function emailValid(){
     const emailValue = email.value.trim();
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
     if (emailValue === "") {
         emailError.textContent = "Email is required.";
         email.classList.add("invalid");
-        error = "invalid";
+        return false;
     } else if (!emailPattern.test(emailValue)){
         emailError.textContent = "Invalid Email format.";
         email.classList.add("invalid");
-        error = "invalid";
+        return false;
     } else {
         emailError.textContent = "";
         email.classList.remove("invalid");
+        return true;
     }
 }
 
@@ -160,16 +166,17 @@ userid.onblur = function (){
     userIDValid();
 }
 
-const userIDValid = () =>{
+function userIDValid(){
     const userIDValue = userid.value.trim();
 
     if (userIDValue === "") {
         useridError.textContent = "UserID is required.";
         userid.classList.add("invalid");
-        error = "invalid";
+        return false;
     } else {
         useridError.textContent = "";
         userid.classList.remove("invalid");
+        return true;
     }
 }
 
@@ -177,13 +184,13 @@ country.onblur = function (){
     countryValid();
 };
 
-const countryValid = () =>{
+function countryValid(){
     const countryValue = country.value.trim();
 
     if (countryValue === "") {
         countryError.textContent = "Please select a country.";
         country.classList.add("invalid");
-        error = "invalid";
+        return false;
     }else {
         countryError.textContent = "";
         country.classList.remove("invalid");
@@ -194,16 +201,17 @@ state.onblur = function (){
     stateValid();
 };
 
-const stateValid = () =>{
+function stateValid(){
     const stateValue = state.value.trim();
 
     if (stateValue === "") {
         stateError.textContent = "Please select a state.";
         state.classList.add("invalid");
-        error = "invalid";
+        return false;
     }else {
         stateError.textContent = "";
         state.classList.remove("invalid");
+        return true;
     }
 }
 
@@ -211,16 +219,17 @@ city.onblur = function (){
     cityValid();
 };
 
-const cityValid = () =>{
+function cityValid(){
     const cityValue = city.value.trim();
 
     if (cityValue === "") {
         cityError.textContent = "Please select a city.";
         city.classList.add("invalid");
-        error = "invalid";
+        return false;
     }else {
         cityError.textContent = "";
         city.classList.remove("invalid");
+        return true;
     }
 }
 
@@ -228,24 +237,25 @@ phone.onblur = function (){
     phoneValid();
 };
 
-const phoneValid = () =>{
+function phoneValid(){
     const phoneValue = phone.value.trim();
 
     if (phoneValue === ""){
         phoneError.textContent = "Phone Number is required.";
         phone.classList.add("invalid");
-        error = "invalid";
+        return false;
     } else if (!/^\d+$/.test(phoneValue)){
         phoneError.textContent = "Phone Number can only countain digits.";
         phone.classList.add("invalid");
-        error = "invalid";
+        return false;
     } else if (!/^\d{10}$/.test(phoneValue)){
         phoneError.textContent = "Phone Number needs to be 10 digits";
         phone.classList.add("invalid");
-        error = "invalid";
+        return false;
     } else {
         phoneError.textContent = "";
         phone.classList.remove("invalid");
+        return true;
     }
 }
 
@@ -253,16 +263,17 @@ refcode.onblur = function (){
     refcodeValid();
 };
 
-const refcodeValid = () =>{
+function refcodeValid(){
     const refcodeValue = refcode.value.trim();
 
     if (refcodeValue === "") {
         refcodeError.textContent = "Referral Code is required.";
         refcode.classList.add("invalid");
-        error = "invalid";
+        return false;
     } else {
         refcodeError.textContent = "";
         refcode.classList.remove("invalid");
+        return true;
     }
 }
 
