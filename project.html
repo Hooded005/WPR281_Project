@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="project.css">
     <script defer src="project.js"></script>
     <script src="https://kit.fontawesome.com/27b74e7d77.js" crossorigin="anonymous"></script>
+main
 </head>
 <body>
     <div class="container">
@@ -16,6 +17,70 @@
     <section id="main-section">
         <section class="section-control">
             <div class="input-control">
+                <label for="firstname">First Name</label>
+                <input id="firstname" name="firstname" type="text">
+                <div id= "fnameError" class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="email">Email ID</label>
+                <input id="email" name="email" type="text">
+                <div id="emailError" class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="country">Country</label>
+                <select id="country"  onchange="updateState()">
+                    <option value="" disabled selected hidden></option>
+                    <option value="option1">South-Africa</option>
+                    <option value="option2">USA</option>
+                    <option value="option3">Canada</option>
+                  </select>
+                <div id="countryError" class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="phone">Phone Number</label>
+                <input id="phone" name="phone" type="text">
+                <div id="phoneError" class="error"></div>
+            </div>
+        </section>
+
+        <section class="section-control">
+            <div class="input-control">
+                <label for="lastname">Last Name</label>
+                <input id="lastname" name="lastname" type="text">
+                <div id="lnameError" class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="userID">Your User ID</label>
+                <input id="userID" name="userID" type="text">
+                <div id="userIDError" class="error"></div>
+            </div>
+            <section class="dropdown-section">
+                <div class="input-control">
+                    <label for="state">State</label>
+                    <select id="state" onchange="updateCity()">     
+                        <option value="" disabled selected hidden></option>
+                      </select>
+                    <div id="stateError" class="error"></div>
+                </div>
+                <div class="input-control">
+                    <label for="city">City</label>
+                    <select id="city">
+                        <option value="" disabled selected hidden></option>
+                      </select>
+                    <div id="cityError" class="error"></div>
+                </div>
+            </section>
+            <div class="input-control">
+                <label for="refcode">Reference Code</label>
+                <input id="refcode" name="refcode" type="text">
+                <div id="refcodeError" class="error"></div>
+            </div>
+        </section>
+    </section>
+        <div class="buttons">
+            <input name="reset" type="reset" value="Reset All">
+            <input name="continue" type="submit" value="Continue">
+        </div
                 <div id="firstName">
                     <label for="firstname">First Name</label><br>
                     <input id="firstname" name="firstname" type="text" placeholder="First Name">
@@ -101,6 +166,7 @@
         <button id="reset" type="reset">Reset All</button>
         <button id="submit" type="submit">Continue</button>
     </div>
+main
         </form>
     </div>
 </body>
