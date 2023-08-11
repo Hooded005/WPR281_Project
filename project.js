@@ -1,6 +1,5 @@
-
-const firstname = document.getElementById("firstname");
-const lastname = document.getElementById("lastname");
+const fname = document.getElementById("firstname");
+const lname = document.getElementById("lastname");
 const email = document.getElementById("email");
 const country = document.getElementById("country");
 const state = document.getElementById("state");
@@ -9,20 +8,23 @@ const phone = document.getElementById("phone");
 const userid = document.getElementById("userID");
 const refcode = document.getElementById("refcode");
 const form = document.getElementById("form");
-const fnameError = document.getElementById('fnameError');
-const lnameError = document.getElementById('lnameError');
-const emailError = document.getElementById('emailError');
-const useridError = document.getElementById('userIDError');
-const countryError = document.getElementById('countryError');
-const stateError = document.getElementById('stateError');
-const cityError = document.getElementById('cityError');
-const phoneError = document.getElementById('phoneError');
-const refcodeError = document.getElementById('refcodeError');
+const fnameError = document.getElementById("fnameError");
+const lnameError = document.getElementById("lnameError");
+const emailError = document.getElementById("emailError");
+const useridError = document.getElementById("userIDError");
+const countryError = document.getElementById("countryError");
+const stateError = document.getElementById("stateError");
+const cityError = document.getElementById("cityError");
+const phoneError = document.getElementById("phoneError");
+const refcodeError = document.getElementById("refcodeError");
 
 form.addEventListener('submit', e => {
-    e.preventDefault();
-
-    validateInputs();
+    if(validateInputs() == false){
+        
+    }
+    else{
+        e.preventDefault();
+    }
 });
 
 form.addEventListener('reset', e => {
@@ -30,24 +32,6 @@ form.addEventListener('reset', e => {
     fname.classList.remove("invalid");
     lnameError.textContent = "";
     lname.classList.remove("invalid");
-    emailError.textContent = "";
-    email.classList.remove("invalid");
-    useridError.textContent = "";
-    userid.classList.remove("invalid");
-    countryError.textContent = "";
-    country.classList.remove("invalid");
-    stateError.textContent = "";
-    state.classList.remove("invalid");
-    state.innerHTML = "";
-    cityError.textContent = "";
-    city.classList.remove("invalid");
-    city.innerHTML = "";
-
-form.addEventListener('reset', e => {
-    fnameError.textContent = "";
-    firstname.classList.remove("invalid");
-    lnameError.textContent = "";
-    lastname.classList.remove("invalid");
     emailError.textContent = "";
     email.classList.remove("invalid");
     countryError.textContent = "";
@@ -190,7 +174,7 @@ const cityValid = () =>{
     const cityValue = city.value.trim();
 
     if (cityValue === "") {
-        cityError.textContent = "Please select a state.";
+        cityError.textContent = "Please select a city.";
         city.classList.add("invalid");
     }else {
         cityError.textContent = "";
