@@ -20,78 +20,91 @@ const cityError = document.getElementById("cityError");
 const phoneError = document.getElementById("phoneError");
 const refcodeError = document.getElementById("refcodeError");
 
-if (page === "register"){
-    form.addEventListener('submit', e => {
-        if (validateInputs() === false) {
-            e.preventDefault();
-            validateInputs(); 
-        }
-        else {
-            page = "valid";
-        }              
-    });        
-    form.addEventListener('reset', e => {
-        fnameError.textContent = "";
-        fname.classList.remove("invalid");
-        lnameError.textContent = "";
-        lname.classList.remove("invalid");
-        emailError.textContent = "";
-        email.classList.remove("invalid");
-        countryError.textContent = "";
-        country.classList.remove("invalid");
-        useridError.textContent = "";
-        userid.classList.remove("invalid");
-        stateError.textContent = "";
-        state.classList.remove("invalid");
-        cityError.textContent = "";
-        city.classList.remove("invalid");
-        phoneError.textContent = "";
-        phone.classList.remove("invalid");
-        refcodeError.textContent = "";
-        refcode.classList.remove("invalid");
-    });
-}
-if(page === "valid"){
-    document.getElementById("pfullname").innerHTML = fname.value.trim() + " " + lname.value.trim();
-    document.getElementById("pemail").innerHTML = email.value.trim();
-    document.getElementById("puserid").innerHTML = userid.value.trim();
-    document.getElementById("pcountry").innerHTML = country.value.trim();
-    document.getElementById("pstate").innerHTML = state.value.trim();
-    document.getElementById("pcity").innerHTML = city.value.trim();
-    document.getElementById("pphone").innerHTML = phone.value.trim();
-    document.getElementById("prefcode").innerHTML = refcode.value.trim();
+switch (page)
+{
+    case "register":
+        form.addEventListener('submit', e => {
+            validateInputs();
+            if (validateInputs() === false) {
+                e.preventDefault();
+            }
+            else {
+                page = "valid";
+            }              
+        });        
+        form.addEventListener('reset', e => {
+            fnameError.textContent = "";
+            fname.classList.remove("invalid");
+            lnameError.textContent = "";
+            lname.classList.remove("invalid");
+            emailError.textContent = "";
+            email.classList.remove("invalid");
+            countryError.textContent = "";
+            country.classList.remove("invalid");
+            useridError.textContent = "";
+            userid.classList.remove("invalid");
+            stateError.textContent = "";
+            state.classList.remove("invalid");
+            cityError.textContent = "";
+            city.classList.remove("invalid");
+            phoneError.textContent = "";
+            phone.classList.remove("invalid");
+            refcodeError.textContent = "";
+            refcode.classList.remove("invalid");
+        });
+        break;
+    case "valid":
+        document.getElementById("pfullname").innerHTML = fname + " " + lname;
+        document.getElementById("pemail").innerHTML = email;
+        document.getElementById("puserid").innerHTML = userid;
+        document.getElementById("pcountry").innerHTML = country;
+        document.getElementById("pstate").innerHTML = state;
+        document.getElementById("pcity").innerHTML = city;
+        document.getElementById("pphone").innerHTML = phone;
+        document.getElementById("prefcode").innerHTML = refcode;
+        break;
+    default:
+        document.getElementById("pfullname").innerHTML = fname + " " + lname;
+        document.getElementById("pemail").innerHTML = email;
+        document.getElementById("puserid").innerHTML = userid;
+        document.getElementById("pcountry").innerHTML = country;
+        document.getElementById("pstate").innerHTML = state;
+        document.getElementById("pcity").innerHTML = city;
+        document.getElementById("pphone").innerHTML = phone;
+        document.getElementById("prefcode").innerHTML = refcode;
+        break;
 }
 
 function validateInputs(){
-    if(fnameValid()){
-        return true;
+    if(fnameValid() === false){
+        return false;
     }
-    else if(lnameValid()){
-        return true;
+    else if(lnameValid() === false){
+        return false;
     }
-    else if(emailValid()){
-        return true;
+    else if(emailValid() === false){
+        return false;
     }
-    else if(userIDValid()){
-        return true;
+    else if(userIDValid() === false){
+        return false;
     }
-    else if(countryValid()){
-        return true;
+    else if(countryValid() === false){
+        return false;
     }
-    else if(stateValid()){
-        return true;
+    else if(stateValid() === false){
+        return false;
     }
-    else if(cityValid()){
-        return true;
+    else if(cityValid() === false){
+        return false;
     }
-    else if(phoneValid()){
-        return true;
+    else if(phoneValid() === false){
+        return false;
     }
-    else if(refcodeValid()){
-        return true;
+    else if(refcodeValid() === false){
+        return false;
     }
     else{
-        return false;
+        return true;
     }
 }
 
