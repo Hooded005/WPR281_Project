@@ -7,167 +7,75 @@
     <link rel="stylesheet" href="project.css">
     <script defer src="project.js"></script>
     <script src="https://kit.fontawesome.com/27b74e7d77.js" crossorigin="anonymous"></script>
-main
 </head>
 <body>
     <div class="container">
         <div id="bluebar"></div>
-        <form id="form" action="/">
+        <form id="form" action="/valid.html">
             <h2>Basic Details</h2>
-    <section id="main-section">
-        <section class="section-control">
+        <section id="main-section">
             <div class="input-control">
-                <label for="firstname">First Name</label>
-                <input id="firstname" name="firstname" type="text">
-                <div id= "fnameError" class="error"></div>
-            </div>
+                <div>
+                    <label for="firstname">First Name</label><br>
+                    <input id="firstname" name="firstname" type="text" placeholder="First Name"><br>
+                    <div id="fnameError" class="error"></div>       
+                </div>
+                 <div>        
+                    <label for="lastname">Last Name</label><br>
+                    <input id="lastname" name="lastname" type="text" placeholder="Last Name"><br>
+                    <div id="lnameError" class="error"></div>
+                </div>
+            </div><br>
             <div class="input-control">
-                <label for="email">Email ID</label>
-                <input id="email" name="email" type="text">
-                <div id="emailError" class="error"></div>
-            </div>
+                <div>
+                    <label for="email">Email ID</label><br>
+                    <input id="email" name="email" type="text" placeholder="Email"><br>
+                    <div id="emailError" class="error"></div>
+                </div>
+                <div>
+                    <label for="userID">Your User ID</label><br>
+                    <input id="userID" name="userID" type="text" placeholder="User ID"><br>
+                    <div id="userIDError" class="error"></div>
+                </div>
+            </div><br>
             <div class="input-control">
                 <label for="country">Country</label>
-                <select id="country"  onchange="updateState()">
+                <select id="country" onchange="updateState()">
                     <option value="" disabled selected hidden></option>
                     <option value="option1">South-Africa</option>
                     <option value="option2">USA</option>
                     <option value="option3">Canada</option>
-                  </select>
+                </select>
                 <div id="countryError" class="error"></div>
-            </div>
+                <label for="state">State</label><br>
+                <select id="state" onchange="updateCity()">     
+                    <option value="" disabled selected hidden></option>
+                </select>
+                <div id="stateError" class="error"></div>
+                <label for="city">City</label><br>
+                <select id="city">
+                    <option value="" disabled selected hidden></option>
+                </select>
+                <div id="cityError" class="error"></div>
+            </div><br>
             <div class="input-control">
-                <label for="phone">Phone Number</label>
-                <input id="phone" name="phone" type="text">
-                <div id="phoneError" class="error"></div>
-            </div>
-        </section>
-
-        <section class="section-control">
-            <div class="input-control">
-                <label for="lastname">Last Name</label>
-                <input id="lastname" name="lastname" type="text">
-                <div id="lnameError" class="error"></div>
-            </div>
-            <div class="input-control">
-                <label for="userID">Your User ID</label>
-                <input id="userID" name="userID" type="text">
-                <div id="userIDError" class="error"></div>
-            </div>
-            <section class="dropdown-section">
-                <div class="input-control">
-                    <label for="state">State</label>
-                    <select id="state" onchange="updateCity()">     
-                        <option value="" disabled selected hidden></option>
-                      </select>
-                    <div id="stateError" class="error"></div>
-                </div>
-                <div class="input-control">
-                    <label for="city">City</label>
-                    <select id="city">
-                        <option value="" disabled selected hidden></option>
-                      </select>
-                    <div id="cityError" class="error"></div>
-                </div>
-            </section>
-            <div class="input-control">
-                <label for="refcode">Reference Code</label>
-                <input id="refcode" name="refcode" type="text">
-                <div id="refcodeError" class="error"></div>
-            </div>
-        </section>
-    </section>
-        <div class="buttons">
-            <input name="reset" type="reset" value="Reset All">
-            <input name="continue" type="submit" value="Continue">
-        </div
-                <div id="firstName">
-                    <label for="firstname">First Name</label><br>
-                    <input id="firstname" name="firstname" type="text" placeholder="First Name">
-                    <i class="fas fa-check"></i>
-                    <i class="fas fa-exclamation"></i><br>
-                    <div id= "fnameError" class="error"></div>
-                </div>
-                <div id="lastName">
-                    <label for="lastname">Last Name</label><br>
-                    <input id="lastname" name="lastname" type="text" placeholder="Last Name">
-                    <i class="fas fa-check"></i>
-                    <i class="fas fa-exclamation"></i><br>
-                    <div id="lnameError" class="error"></div>
-                </div>
-            </div>
-            <div class="input-control">
-                <div id="eMail">
-                    <label for="email">Email ID</label><br>
-                    <input id="email" name="email" type="text" placeholder="Email ID">
-                    <i class="fas fa-check"></i>
-                    <i class="fas fa-exclamation"></i><br>
-                    <div id="emailError" class="error"></div>
-                </div>
-                <div id="userid">
-                    <label for="userID">Your User ID</label><br>
-                    <input id="userID" name="userID" type="text" placeholder="User ID">
-                    <i class="fas fa-check"></i>
-                    <i class="fas fa-exclamation"></i><br>
-                    <div id="userIDError" class="error"></div>
-                </div>
-            </div>
-            <div class="input-control">
-                <div id="countries">
-                    <label for="country">Country</label><br>
-                    <select id="country">
-                        <option value="" disabled selected hidden></option>
-                        <option value="option1">South-Africa</option>
-                        <option value="option2">USA</option>
-                        <option value="option3">Canada</option>
-                    </select>
-                    <div id="countryError" class="error"></div>
-                </div>
-                <div id="states">
-                    <label for="state">State</label><br>
-                    <select id="state">
-                        <option value="" disabled selected hidden></option>
-                        <option value="option1">Western Cape</option>
-                        <option value="option2">California</option>
-                        <option value="option3">Alberta</option>
-                    </select>
-                    <div id="stateError" class="error"></div>
-                </div>
-                <div id="cities">
-                    <label for="city">City</label><br>
-                    <select id="city">
-                        <option value="" disabled selected hidden></option>
-                        <option value="option1">Cape Town</option>
-                        <option value="option2">Los Angeles</option>
-                        <option value="option3">Calgary</option>
-                    </select>
-                    <div id="cityError" class="error"></div>
-                </div>
-            </div>
-            <div class="input-control">
-                <div id="number">
+                <div>
                     <label for="phone">Phone Number</label><br>
-                    <input id="phone" name="phone" type="text" placeholder="Phone Number">
-                    <i class="fas fa-check"></i>
-                    <i class="fas fa-exclamation"></i><br>
+                    <input id="phone" name="phone" type="text" placeholder="Phone Number"><br>
                     <div id="phoneError" class="error"></div>
                 </div>
-                <div id="reference">
+                <div>
                     <label for="refcode">Reference Code</label><br>
-                    <input id="refcode" name="refcode" type="text" placeholder="Reference Code">
-                    <i class="fas fa-check"></i>
-                    <i class="fas fa-exclamation"></i><br>
+                    <input id="refcode" name="refcode" type="text" placeholder="Reference Code"><br>
                     <div id="refcodeError" class="error"></div>
                 </div>
             </div>
         </section>
-    </section>
-    <div id="buttons">
-        <button id="reset" type="reset">Reset All</button>
-        <button id="submit" type="submit">Continue</button>
-    </div>
-main
-        </form>
+        <div class="buttons">
+            <button id="reset" type="reset">Reset All</button>
+            <button id="submit" type="submit">Continue</button>        
+        </div>
+        </form>        
     </div>
 </body>
 </html>
