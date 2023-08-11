@@ -8,7 +8,7 @@
     <script defer src="project.js"></script>
     <script src="https://kit.fontawesome.com/27b74e7d77.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body id="register">
     <div class="container">
         <div id="bluebar"></div>
         <form id="form" action="/valid.html">
@@ -39,7 +39,7 @@
                 </div>
             </div><br>
             <div class="input-control">
-                <label for="country">Country</label>
+                <label for="country">Country:</label>
                 <select id="country" onchange="updateState()">
                     <option value="" disabled selected hidden></option>
                     <option value="option1">South-Africa</option>
@@ -47,12 +47,12 @@
                     <option value="option3">Canada</option>
                 </select>
                 <div id="countryError" class="error"></div>
-                <label for="state">State</label><br>
+                <label for="state">State:</label><br>
                 <select id="state" onchange="updateCity()">     
                     <option value="" disabled selected hidden></option>
                 </select>
                 <div id="stateError" class="error"></div>
-                <label for="city">City</label><br>
+                <label for="city">City:</label><br>
                 <select id="city">
                     <option value="" disabled selected hidden></option>
                 </select>
